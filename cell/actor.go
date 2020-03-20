@@ -80,7 +80,10 @@ func (self *Handler) HandleEvent(ev cellnet.Event) {
 		self.OnAccepted(ev)
 	case *cellnet.SessionConnected: // 已经连接上
 		self.OnConnected(ev)
-
+	case *HandMsg:
+		self.HandleHand(ev)
+	case *SackMsg:
+		self.HandleSack(ev)
 	case *cellnet.SessionClosed:
 		self.OnClosed(ev)
 	}

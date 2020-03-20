@@ -59,6 +59,17 @@ func (self *OverMsg) String() string {
 	return string(buf)
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
+type SackMsg struct {
+	Code string `json:"code"`
+	Info string `json:"info"`
+}
+
+func (self *SackMsg) String() string {
+	buf, _ := json.Marshal(self)
+	return string(buf)
+}
+
 // 将消息注册到系统
 func init() {
 	cellnet.RegisterMessageMeta(&cellnet.MessageMeta{
@@ -75,5 +86,10 @@ func init() {
 		Codec: codec.MustGetCodec("binary"),
 		Type:  reflect.TypeOf((*OverMsg)(nil)).Elem(),
 		ID:    OVER,
+	})
+	cellnet.RegisterMessageMeta(&cellnet.MessageMeta{
+		Codec: codec.MustGetCodec("binary"),
+		Type:  reflect.TypeOf((*SackMsg)(nil)).Elem(),
+		ID:    SACK,
 	})
 }

@@ -10,6 +10,7 @@ require (
 	github.com/davyxu/golog v0.1.0
 	github.com/davyxu/goobjfmt v0.1.0 // indirect
 	github.com/davyxu/protoplus v0.1.0 // indirect
+	github.com/fananchong/cstruct-go v0.0.0-20190401090722-b07fd3d15e2d
 	github.com/fwhezfwhez/errorx v0.0.0-20200108080008-e2e1af0e0c70 // indirect
 	github.com/fwhezfwhez/tcpx v0.0.0-20200110044634-c35f3f515f4e
 	github.com/go-playground/universal-translator v0.17.0 // indirect
