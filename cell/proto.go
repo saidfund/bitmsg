@@ -17,7 +17,7 @@ const (
 
 /////////////////////////////////////////////////////////////////////////////////////
 type HandMsg struct {
-	Mkt  string `json:"mkt"`
+	Addr string `json:"addr"`
 	Info string `json:"info"`
 }
 

@@ -3,12 +3,15 @@ package block
 import (
 	"encoding/hex"
 	"fmt"
+	"github.com/davyxu/golog"
 	"testing"
 )
 
 func TestRouting_Dump(t *testing.T) {
+	var log *golog.Logger = golog.New("test")
+
 	routing := NewRouting([]byte("addr"), []byte("sub"))
-	fmt.Println(routing)
+	log.Infof("%s\n", routing.String())
 
 	fmt.Println(routing.Address())
 	fmt.Println(routing.Subress())

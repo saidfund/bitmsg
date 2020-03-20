@@ -7,7 +7,7 @@ require (
 	github.com/btcsuite/btcutil v0.0.0-20191219182022-e17c9730c422
 	github.com/cbergoon/merkletree v0.2.0
 	github.com/davyxu/cellnet v4.1.0+incompatible
-	github.com/davyxu/golog v0.1.0 // indirect
+	github.com/davyxu/golog v0.1.0
 	github.com/davyxu/goobjfmt v0.1.0 // indirect
 	github.com/davyxu/protoplus v0.1.0 // indirect
 	github.com/fwhezfwhez/errorx v0.0.0-20200108080008-e2e1af0e0c70 // indirect

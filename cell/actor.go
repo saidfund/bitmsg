@@ -61,17 +61,17 @@ func (self *Handler) SetLink(ev cellnet.Event) string {
 
 func (self *Handler) OnAccepted(ev cellnet.Event) {
 	self.SetLink(ev)
-	log.Info(self.Role, "server accepted ", self.Link)
+	log.Infoln(self.Role, "server accepted ", self.Link)
 }
 
 func (self *Handler) OnConnected(ev cellnet.Event) {
 	self.SetLink(ev)
-	log.Info(self.Role, "client connected ", self.Link)
+	log.Infoln(self.Role, "client connected ", self.Link)
 	self.ShakeHand(ev)
 }
 
 func (self *Handler) OnClosed(ev cellnet.Event) {
-	log.Info(self.Role, "Closed :", self.Link)
+	log.Infoln(self.Role, "Closed :", self.Link)
 }
 
 func (self *Handler) HandleEvent(ev cellnet.Event) {
@@ -80,18 +80,7 @@ func (self *Handler) HandleEvent(ev cellnet.Event) {
 		self.OnAccepted(ev)
 	case *cellnet.SessionConnected: // 已经连接上
 		self.OnConnected(ev)
-	case *EchoMsg:
-		ev.Session().Close()
-	case *HandMsg:
-		self.HandleHand(ev)
-	case *BmapMsg:
-		self.HandleBmap(ev)
-	case *HaveMsg:
-		self.HandleHave(ev)
-	case *IndxMsg:
-		self.HandleIndx(ev)
-	case *ChipMsg:
-		self.HandleChip(ev)
+
 	case *cellnet.SessionClosed:
 		self.OnClosed(ev)
 	}
