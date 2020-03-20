@@ -1,13 +1,6 @@
 package block
 
-import (
-	"encoding/hex"
-	"fmt"
-	"gitee.com/saymsg/store"
-	"testing"
-)
-
-func TestPackage_Dump(t *testing.T) {
+/*func TestPackage_Dump(t *testing.T) {
 	pkg := NewPackage(0x74, 0xffff, "sign")
 	dump, err := pkg.Dump()
 
@@ -28,4 +21,4 @@ func TestUnDump(t *testing.T) {
 	}
 	pkg, err := NewPackageUnDump(dump)
 	fmt.Println(pkg)
-}
+}*/
