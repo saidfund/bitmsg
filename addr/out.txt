@@ -1,0 +1,42 @@
+GOROOT=C:\Go #gosetup
+GOPATH=C:\Users\Administrator\go #gosetup
+C:\Go\bin\go.exe test -c -o C:\Users\Administrator\AppData\Local\Temp\___TestSayKey_Verify_in_gitee_com_saymsg_addr.exe gitee.com/saymsg/addr #gosetup
+C:\Go\bin\go.exe tool test2json -t C:\Users\Administrator\AppData\Local\Temp\___TestSayKey_Verify_in_gitee_com_saymsg_addr.exe -test.v -test.run ^TestSayKey_Verify$ #gosetup
+=== RUN   TestSayKey_Verify
+My privateKey is :
+00000000  9d d1 15 a0 6d d0 9e a7  f8 82 1b 83 16 bb 74 d6  |....m.........t.|
+00000010  3a ce eb b5 e6 5b bd c4  15 03 ac 40 15 7b dd 27  |:....[.....@.{.'|
+
+My publickKey is :
+00000000  81 92 09 67 d2 bc 67 bd  d1 ba 4e b3 5c f1 57 d8  |...g..g...N.\.W.|
+00000010  fd f9 b5 96 c4 50 34 67  26 d3 75 64 f9 07 18 6f  |.....P4g&.ud...o|
+00000020  34 07 1d 78 b3 c8 39 93  51 ba 69 2c be 0b c3 a0  |4..x..9.Q.i,....|
+00000030  39 74 82 83 4a 87 57 5f  83 db b2 a3 68 64 31 5d  |9t..J.W_....hd1]|
+
+1 - Perform SHA-256 hashing on the public key
+2 - Perform RIPEMD-160 hashing on the result of SHA-256
+3 - Add version byte in front of RIPEMD-160 hash (0x00 for Main Network)
+0032A85EE23AA67EFB626B3EC2DE42756B8EE0BA71
+================
+4 - Perform SHA-256 hash on the extended PIPEMD-160 result
+FFCFAC78C92608039EB35F285BEBF46C27CEF2B6EDECA7DADFF8DDD0F02004FE
+================
+5 - Perform SHA-256 hash on the result of the previous SHA-256 hash
+0DB5A22F8DA551A9388C3EA5BF3A7B27DD86100FEE751657228ED4C36DD1A94E
+================
+6 - Take the first 4 bytes of the second SHA-256 hash. This is the address chechsum
+0DB5A22F
+================
+7 - Add the 4 checksum bytes from stage 7 at the end of extended PIPEMD-160 hash from stage 4. This is the 25-byte binary Bitcoin Address.
+0032A85EE23AA67EFB626B3EC2DE42756B8EE0BA710DB5A22F
+================
+8 - Convet the result from a byte string into a base58 string using Base58Check encoding. This is the most commonly used Bitcoin Address format
+15crVBwbPpF18mjUCcHpyVcZAEUf6r4zC6
+================
+My address is: 15crVBwbPpF18mjUCcHpyVcZAEUf6r4zC6
+Signature is : [31 139 8 0 0 0 0 0 0 255 20 204 185 17 3 65 12 3 176 130 156 144 18 159 85 255 141 121 46 69 128 40 169 234 87 211 135 45 129 148 151 114 113 193 110 196 51 132 73 23 117 18 3 119 221 62 201 17 7 110 50 251 126 15 53 15 1 36 123 211 209 59 76 149 183 236 152 19 230 204 0 179 163 201 215 86 115 90 18 248 128 25 133 30 221 31 0 0 255 255]
+Verify success
+--- PASS: TestSayKey_Verify (0.02s)
+PASS
+
+Process finished with exit code 0
