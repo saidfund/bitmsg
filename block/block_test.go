@@ -3,8 +3,8 @@ package block
 import (
 	"encoding/hex"
 	"fmt"
+
 	"github.com/saidfund/bitmsg/chunk"
-	"log"
 	"testing"
 )
 
@@ -24,7 +24,7 @@ func TestBlock(t *testing.T) {
 		Version:    3,
 		HashPrev:   chunk.GetHash('a'),
 		HashMerkle: chunk.GetHash('b'),
-		Count:      12,
+		Count:      0,
 		Extension:  0,
 	}
 	//fmt.Println(h)
@@ -51,6 +51,6 @@ func TestBlock(t *testing.T) {
 	c.Marshal()
 	b := NewBlock(*h, *r)
 	b.AddContent(*c)
-
-	log.Println(hex.Dump(b.Marshal()))
+	fmt.Println(hex.Dump(b.Header.HashMerkle[:]))
+	fmt.Println(hex.Dump(b.Marshal()))
 }

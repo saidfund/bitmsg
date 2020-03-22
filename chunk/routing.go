@@ -1,8 +1,6 @@
 package chunk
 
 import (
-
-	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"github.com/fananchong/cstruct-go"
@@ -31,7 +29,7 @@ func RoutingUnMarshal(data []byte) (self *Routing) {
 
 func (self *Routing) Marshal() []byte {
 	data, _ := cstruct.Marshal(self)
-	fmt.Println(hex.Dump(data))
+	//fmt.Println(hex.Dump(data))
 	return data
 }
 
@@ -50,7 +48,7 @@ type Quater struct {
 	Sub  string
 }
 
-func (self *Quater)FromStr(data string) {
+func (self *Quater) FromStr(data string) {
 	result := strings.Split(data, ".")
 	if len(result) != 2 {
 		return
@@ -60,6 +58,7 @@ func (self *Quater)FromStr(data string) {
 	return
 }
 
-func (self *Quater)ToBytes()([48]byte) {
-	return GetBytes48([]byte(self.Main + "." + self.Sub))
+func (self *Quater) ToBytes() (result [48]byte) {
+	copy(result[:], []byte(self.Main+"."+self.Sub))
+	return
 }

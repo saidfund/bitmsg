@@ -53,6 +53,13 @@ func NewBlock(header chunk.Header, routing chunk.Routing) *Block {
 
 func (self *Block) AddContent(content chunk.Content) {
 	self.Content = append(self.Content, content)
+	data := [][]byte{}
+	for _, v := range self.Content {
+		data = append(data, v.Marshal())
+	}
+	m := chunk.NewMerkleTree(data)
+	copy(self.Header.HashMerkle[:], m.RootNode.Data)
+	self.Header.Count = uint32(len(self.Content))
 }
 
 func (self *Block) Marshal() []byte {

@@ -1,7 +1,6 @@
 package chunk
 
 import (
-	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"github.com/fananchong/cstruct-go"
@@ -25,7 +24,7 @@ func UnMarshal(data []byte) (self *Header) {
 
 func (self *Header) Marshal() []byte {
 	data, _ := cstruct.Marshal(self)
-	fmt.Println(hex.Dump(data))
+	//fmt.Println(hex.Dump(data))
 	return data
 }
 
