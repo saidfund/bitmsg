@@ -18,16 +18,8 @@ func TestBlock(t *testing.T) {
 
 	fmt.Println(l)
 
-	h := &chunk.Header{
-		TimeStamp:  1,
-		Option:     2,
-		Version:    3,
-		HashPrev:   chunk.GetHash('a'),
-		HashMerkle: chunk.GetHash('b'),
-		Count:      0,
-		Extension:  0,
-	}
-	//fmt.Println(h)
+	h := &chunk.Header{}
+	fmt.Println(hex.Dump(h.Marshal()))
 
 	caller := &chunk.Quater{
 		Main: "1LVfRcj31E9mGujxUD3nTJjsUPtcczqJnX",
@@ -39,18 +31,18 @@ func TestBlock(t *testing.T) {
 	}
 
 	r := chunk.NewRouting(caller, callee)
-
-	//fmt.Println(r)
+	fmt.Println(hex.Dump(r.Marshal()))
 
 	c := &chunk.Content{
-		HashLeaf: chunk.GetHash('3'),
-		Cipher:   []byte{},
-		Body:     []byte("Hello bitmsg"),
+		Sha:    chunk.GetHash('0'),
+		Mime:   0xff,
+		Cipher: []byte{},
+		Body:   []byte("Hello bitmsg"),
 	}
 	//fmt.Println(c)
 	c.Marshal()
 	b := NewBlock(*h, *r)
 	b.AddContent(*c)
-	fmt.Println(hex.Dump(b.Header.HashMerkle[:]))
+	fmt.Println(hex.Dump(b.Header.ShaMerkle[:]))
 	fmt.Println(hex.Dump(b.Marshal()))
 }
