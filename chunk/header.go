@@ -17,14 +17,6 @@ type Header struct {
 	Extension  uint32   //扩展头部长度， 暂时不用
 }
 
-func getHash(b byte) [32]byte {
-	var a [32]byte
-	for i := 0; i < 32; i++ {
-		a[i] = b
-	}
-	return a
-}
-
 func UnMarshal(data []byte) (self *Header) {
 	self = &Header{}
 	cstruct.Unmarshal(data, self)
